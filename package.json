@@ -10,9 +10,9 @@
   "dependencies": {
     "async": "~0.2.8",
     "body-parser": "^1.17.1",
+    "mongodb": "^2.2.25"
     "dotenv": "^4.0.0",
     "express": "~3.2.4",
-    "mongodb":"^3.2.12",
     "mongoose": "^4.9.0",
     "socket.io": "~0.9.14",
     "valid-url": "^1.0.9"
