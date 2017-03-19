@@ -1,0 +1,20 @@
+{
+  "name": "shorturl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "WiseKodama",
+  "dependencies": {
+    "async": "~0.2.8",
+    "body-parser": "^1.17.1",
+    "dotenv": "^4.0.0",
+    "express": "~3.2.4",
+    "mongoose": "^4.9.0",
+    "socket.io": "~0.9.14",
+    "valid-url": "^1.0.9"
+  },
+  "license": "ISC"
+}
