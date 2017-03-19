@@ -1,17 +1,15 @@
 var express = require('express');
-var url = require('url');
 var validUrl = require('valid-url');
 var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
 var Url = require('./db');
-require('dotenv').config();
 
 mongoose.Promise = global.Promise;
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
-mongoose.connect('mongodb://wisekodama:haha1234@ds015953.mlab.com:15953/sudb',options);
+mongoose.connect(process.env.PROD_MONGODB,options);
 
 var conn = mongoose.connection;
 
@@ -27,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'views')));
 var port = process.env.PORT||8080;
 
 app.get('/',function(req,res){
-    console.log('why');
     res.render('index');
 });
 
