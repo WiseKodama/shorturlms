@@ -11,7 +11,7 @@ require('dotenv').config();
 mongoose.Promise = global.Promise;
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
-mongoose.connect(process.env.PROD_MONGODB,options);
+mongoose.connect('mongodb://wisekodama:haha1234@ds015953.mlab.com:15953/sudb',options);
 
 var conn = mongoose.connection;
 
@@ -90,4 +90,4 @@ function decode(str){
   return decoded;
 };
 
-app.listen(port);
+app.listen(port,function(){console.log("starting");});
