@@ -6,6 +6,7 @@ var app = express();
 var mongoose = require('mongoose');
 var Url = require('./db');
 
+var originalUrl = 'https://kodamashorter.herokuapp.com/';
 mongoose.Promise = global.Promise;
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
@@ -35,13 +36,13 @@ app.get('/shorten/*',function(req,res){
     Url.findOne({longUrl:passedUrl},function(err,doc){
       if(err) console.error(err);
       if(doc){
-        encodedUrl = process.env.host +'/short/' + encode(doc._id);
+        encodedUrl = originalUrl +'/short/' + encode(doc._id);
         res.send({'originalurl':passedUrl,'altUrl':encodedUrl});
       }else{
         var newUrl = Url({longUrl:passedUrl});
         newUrl.save(function(err){
           if(err) console.error(err);
-          encodedUrl = process.env.host +'/short/'+ encode(newUrl._id);
+          encodedUrl = originalUrl +'/short/'+ encode(newUrl._id);
           res.send({'originalurl':passedUrl,'altUrl':encodedUrl});
         })
       }
